@@ -14,8 +14,9 @@ class Sign_up extends MY_Controller {
  
     function index()
     {
+        $data['user_panel'] = $this->load->view('navbar_auth','', TRUE);
         $this->load->view('html_head');
-        $this->load->view('navbar_guest');
+        $this->load->view('navbar', $data);
         $this->load->view('signup_view');
         $this->load->view('html_bottom');
     }
@@ -69,7 +70,6 @@ class Sign_up extends MY_Controller {
         
         $this->form_validation->set_rules($config);
         $this->form_validation->run();
-        //echo  validation_errors();
         if(validation_errors())
         {
             $errors = array('login' => form_error('login'),
@@ -78,7 +78,17 @@ class Sign_up extends MY_Controller {
                             'passconf' => form_error('passconf'));
             echo json_encode($errors, JSON_UNESCAPED_UNICODE);
         }
-        else echo "OK";
+        else
+        {
+            
+            $user_data['login'] = $this->input->post()['login'];
+            $user_data['email'] = $this->input->post()['email'];
+            $user_data['password'] = md5($this->input->post()['password']);
+            $user_data['activation_key'] = md5('13'.$user_data['login']);
+            $this->load->model('sign_up_model','', TRUE);
+            $this->sign_up_model->add_user($user_data);
+            echo "OK";
+        }
     }
     
     

@@ -1,6 +1,11 @@
-#signin
+
+.container
 {
-    outline: none;
+    position: relative;
+}
+.panel-body
+{
+    background-color: rgb(220, 220, 240);
 }
 
 button:active, button:focus {
@@ -11,9 +16,17 @@ button:active, button:focus {
 {
     margin: 0 auto;
     width: 400px;
-    /*padding: 20px;*/
-   
-    /*background-color: rgb(180, 180, 180);*/
+}
+
+#sign_in_form input
+{
+    height: 20px;
+    padding: 3px;
+}
+
+#user_panel #logout
+{
+    margin-top: 11px;
 }
 
 #reg_success
@@ -25,8 +38,12 @@ button:active, button:focus {
     display:none;*/
 }
 
-#login_error, #email_error, #password_error, #passconf_error
+#login_error, #email_error, #password_error, #passconf_error, #sign_in_error
 {
     display: none;
 }
 
+#nav_bar
+{
+    background-image: linear-gradient(rgba(50,50,50,1), rgba(20,20,20,1));
+}
