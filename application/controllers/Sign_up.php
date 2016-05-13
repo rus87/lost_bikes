@@ -14,11 +14,10 @@ class Sign_up extends MY_Controller {
  
     function index()
     {
-        $data['user_panel'] = $this->load->view('navbar_auth','', TRUE);
-        $this->load->view('html_head');
-        $this->load->view('navbar', $data);
-        $this->load->view('signup_view');
-        $this->load->view('html_bottom');
+        $this->data['user_panel'] = $this->load->view('navbar_auth','', TRUE);
+        $this->data['content'] = $this->load->view('signup','', TRUE);
+        $this->data['menu_active_btn'] = array('add_bike' => '', 'search' => '');
+        $this->load->view('basic_template', $this->data);
     }
     
     function validate()

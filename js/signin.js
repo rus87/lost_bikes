@@ -1,8 +1,13 @@
 $(document).ready(function(){
     
+    $(document).on("click", "#show_login_popup", function()
+    {
+        $("#login_popup").toggle();
+    });
+    
     $(document).on("click", "#signin", function()
     {
-        form_data = $("#sign_in_form").serialize();
+        var form_data = $("#sign_in_form").serialize();
         $.ajax
         ({
             method: "POST",
@@ -15,11 +20,11 @@ $(document).ready(function(){
                 if(data.error != '')
                     {
                         $("#error_text").text(data.error);
-                        $("#sign_in_error").slideDown();
+                        $("#user_error").slideDown();
                     }
                 else
                     {
-                        $("#sign_in_error").slideUp();
+                        $("#user_error").slideUp();
                         $("#user_panel").html(data.response);
                     }
             }
