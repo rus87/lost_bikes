@@ -22,6 +22,7 @@ class Search_model extends MY_Model
         $this->db->or_like('chainguide', $input);
         $this->db->or_like('handlebar', $input);
         $this->db->or_like('stem', $input);
+        $this->db->or_like('location', $input);
         
         $query = $this->db->get('bikes');
 

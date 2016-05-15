@@ -43,7 +43,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div id="user_error" class="alert alert-danger" role="alert"><strong>Ошибка :( </strong>
               <span id="error_text"></span>
           </div>
-          <div id="content"><?php echo $content ?></div>
+          <div id="content" ><?php echo $content ?></div>
       </div>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     

@@ -26,6 +26,8 @@ class Search extends MY_Controller {
             $img = explode('.', $row->photo);
             $data['frame'] = $row->frame;
             $data['img'] = 'uploads/'.$img[0].'_thumb.'.$img[1];
+            $data['location'] = $row->location;
+            $data['loss_date'] = $row->loss_date;
             $bikes .= $this->load->view('search_bike_prev', $data, TRUE);
         }
         $this->data['bikes'] = $bikes;
@@ -48,6 +50,8 @@ class Search extends MY_Controller {
             $img = explode('.', $row->photo);
             $data['frame'] = $row->frame;
             $data['img'] = 'uploads/'.$img[0].'_thumb.'.$img[1];
+            $data['location'] = $row->location;
+            $data['loss_date'] = $row->loss_date;
             $bikes .= $this->load->view('search_bike_prev', $data, TRUE);
         }
             

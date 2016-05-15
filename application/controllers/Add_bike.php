@@ -62,7 +62,8 @@ class Add_bike extends MY_Controller {
     function create_images($orig_name)
     {
         $this->resize_img($orig_name, '_popup', 850, 550);
-        $this->resize_img($orig_name, '_thumb', 180, 180);
+        //$this->resize_img($orig_name, '_thumb', 180, 180);
+        $this->crop_resize($orig_name, '_thumb', 180);
             
     }
     
@@ -128,8 +129,7 @@ class Add_bike extends MY_Controller {
             if(! $this->image_lib->resize()) echo $this->image_lib->display_errors();
             else
             {
-                echo 'resize OK<br>';
-                
+
                 unset($config);
                 $this->image_lib->clear();
                 
@@ -144,7 +144,6 @@ class Add_bike extends MY_Controller {
                 if(! $this->image_lib->crop()) echo $this->image_lib->display_errors();
                 else
                 {
-                    echo 'crop1 OK<br>';
                     unset($config);
                     $this->image_lib->clear();
                     $config['image_library'] = 'gd2';
@@ -155,7 +154,6 @@ class Add_bike extends MY_Controller {
                     if(! $this->image_lib->rotate()) echo $this->image_lib->display_errors();
                     else
                     {
-                        echo 'rotate1 OK <br>';
                         unset($config);
                         $this->image_lib->clear();
 
@@ -167,7 +165,6 @@ class Add_bike extends MY_Controller {
                         if(! $this->image_lib->crop()) echo $this->image_lib->display_errors();
                         else
                         {
-                            echo 'crop2 OK<br>';
                             unset($config);
                             $this->image_lib->clear();
                             $config['image_library'] = 'gd2';
@@ -176,7 +173,66 @@ class Add_bike extends MY_Controller {
 
                             $this->image_lib->initialize($config);
                             if(! $this->image_lib->rotate()) echo $this->image_lib->display_errors();
-                            else echo 'rotate2 OK <br>';
+                        }
+                    }
+                }
+            }
+        }
+        else
+        {
+            $config['image_library'] = 'gd2';
+            $config['source_image'] = 'uploads/'.$orig_name;
+            $config['create_thumb'] = TRUE;
+            $config['thumb_marker'] = $suffix;
+            $config['maintain_ratio'] = TRUE;
+            $config['width'] = $size;
+            $this->load->library('image_lib', $config);
+            if(! $this->image_lib->resize()) echo $this->image_lib->display_errors();
+            else
+            {
+                unset($config);
+                $this->image_lib->clear();
+                
+                $cropped_height = getimagesize('uploads/'.$name.$suffix.'.'.$type)[1];
+                $cropped_width = getimagesize('uploads/'.$name.$suffix.'.'.$type)[0];
+                
+                $config['image_library'] = 'gd2';
+                $config['source_image'] = 'uploads/'.$name.$suffix.'.'.$type;
+                $config['maintain_ratio'] = FALSE;
+                $config['height'] = $cropped_width + ($cropped_height - $cropped_width)/2;
+                $this->image_lib->initialize($config);
+                if(! $this->image_lib->crop()) echo $this->image_lib->display_errors();
+                else
+                {
+                    unset($config);
+                    $this->image_lib->clear();
+                    $config['image_library'] = 'gd2';
+                    $config['source_image'] = 'uploads/'.$name.$suffix.'.'.$type;
+                    $config['rotation_angle'] = 'vrt';
+                    
+                    $this->image_lib->initialize($config);
+                    if(! $this->image_lib->rotate()) echo $this->image_lib->display_errors();
+                    else
+                    {
+                        unset($config);
+                        $this->image_lib->clear();
+
+                        $config['image_library'] = 'gd2';
+                        $config['source_image'] = 'uploads/'.$name.$suffix.'.'.$type;
+                        $config['maintain_ratio'] = FALSE;
+                        $config['height'] = $cropped_width;
+                        $this->image_lib->initialize($config);
+                        if(! $this->image_lib->crop()) echo $this->image_lib->display_errors();
+                        else
+                        {
+                            unset($config);
+                            $this->image_lib->clear();
+                            $config['image_library'] = 'gd2';
+                            $config['source_image'] = 'uploads/'.$name.$suffix.'.'.$type;
+                            $config['rotation_angle'] = 'vrt';
+
+                            $this->image_lib->initialize($config);
+                            if(! $this->image_lib->rotate()) echo $this->image_lib->display_errors();
                         }
                     }
                 }

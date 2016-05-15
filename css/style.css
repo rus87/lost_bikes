@@ -4,7 +4,9 @@ body
 .container
 {
     position: relative;
+    
 }
+
 .panel-body
 {
     background-color: rgb(220, 220, 240);
@@ -63,6 +65,7 @@ button:active, button:focus {
     /*background-image: linear-gradient(rgba(50,50,50,1), rgba(20,20,20,1));*/
    /* padding: 10px 0 0 5px;*/
     text-align: center; 
+    z-index: 10;
 }
 
 #user_error
@@ -87,9 +90,32 @@ button:active, button:focus {
     resize: none;
 }
 
+#prev_box
+{
+    height: 280px;
+    transition: all 0.3s ease-out;
+    margin-bottom: 15px;
+    width: 28%;
+}
+#prev_box:hover
+{
+    background-color: rgb(220, 220, 240);
+    
+}
 
 
+#search_block
+{
+    margin-bottom: 20px;
+}
 
+.frm
+{
+    font-weight: bold;
+    margin-bottom: 0px;
+    white-space: nowrap;
+    overflow: hidden;
+}
 
 
 
