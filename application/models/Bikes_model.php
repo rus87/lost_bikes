@@ -1,5 +1,5 @@
 <?php
-class Search_model extends MY_Model
+class Bikes_model extends MY_Model
 {
     function search($input)
     {
@@ -26,13 +26,54 @@ class Search_model extends MY_Model
         
         $query = $this->db->get('bikes');
 
-        return $query->result();
+        //return $query->result();
+        return $this->fetch_result($query->result());
     }
     
-    function get_last_n_bikes($n)
+    function get_bikes($offset, $per_page)
     {
-        $query = $this->db->get('bikes', $n);
-        return $query->result();
+        //$offset = ($page - 1) * $per_page;
+        $this->db->order_by('modified', 'DESC');
+        $query = $this->db->get('bikes', $per_page, $offset);
+        return $this->fetch_result($query->result());
     }
+    
+    function bikes_count()
+    {
+        return $this->db->count_all('bikes');
+    }
+    
+    
+    function fetch_result($input)
+    {
+        foreach($input as $row)
+        {
+            $bikes []= array(
+                'frame' => $row->frame,
+                'location' => $row->location,
+                'loss_date' => $row->loss_date,
+                'photo' => $row->photo,
+                'id' => $row->id);
+        }
+        return $bikes;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
 

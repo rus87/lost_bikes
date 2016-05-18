@@ -83,3 +83,62 @@ defined('EXIT_USER_INPUT')     OR define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+
+
+
+define("BIKE_PARTS", array(
+    'frame' => 'Байк/рама',
+    //'location' => 'Город',
+    //'loss_date' => 'Дата кражи',
+    //'frame_serial' => 'Серийный номер',
+    'fork' => 'Вилка',
+    'amort' => 'Амортизатор',
+    'break_rear' => 'Задний тормоз',
+    'break_front' => 'Передний тормоз',
+    'crankset' => 'Система',
+    'der_front' => 'Передняя перекидка',
+    'der_rear' => 'Задняя перекидка',
+    'cassetee' => 'Кассета',
+    'sleeve_front' => 'Передняя втулка',
+    'sleeve_rear' => 'Задняя втулка',
+    'rims' => 'Обода',
+    'tire_front' => 'Передняя покрышка',
+    'tire_rear' => 'Задняя покрышка',
+    'chainguide' => 'Успокоитель цепи',
+    'handlebar' => 'Руль',
+    'stem' => 'Вынос'
+));
+
+define ("PARTS_KEYS", array_keys(BIKE_PARTS));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

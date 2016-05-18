@@ -15,7 +15,7 @@
     </form>
     <div class="row">
     <div class="col-sm-4">
-        <form action="sign_up" method="post">
+        <form action="<?php echo base_url();?>sign_up" method="post">
             <button class="btn btn-sm btn-link" type="submit">Регистрация</button>
         </form>
     </div>

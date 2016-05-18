@@ -24,7 +24,7 @@ class Add_bike extends MY_Controller {
             $this->data['content'] = $this->load->view('permission_denied','', TRUE);
         }
         
-        $this->data['menu_active_btn'] = array('add_bike' => 'active', 'search' => '');
+        $this->data['menu_active_btn'] = array('add_bike' => 'active', 'bikes' => '');
 		$this->load->view('basic_template', $this->data);
     }
     
@@ -38,7 +38,7 @@ class Add_bike extends MY_Controller {
         }
         else
         {
-            $config['upload_path'] = './uploads';
+            $config['upload_path'] ='uploads';
             $config['allowed_types'] = 'jpg|jpeg';
             $config['max_size'] = '10000';
             $config['encrypt_name'] = TRUE;
@@ -61,13 +61,12 @@ class Add_bike extends MY_Controller {
     
     function create_images($orig_name)
     {
-        $this->resize_img($orig_name, '_popup', 850, 550);
-        //$this->resize_img($orig_name, '_thumb', 180, 180);
-        $this->crop_resize($orig_name, '_thumb', 180);
-            
+        
+        $this->crop_resize($orig_name);
+        $this->resize_img($orig_name);
     }
     
-    function resize_img($orig_name, $suffix, $width, $height)
+    function resize_img($orig_name, $suffix = '_popup', $width = 850, $height = 550)
     {
         $name = explode('.', $orig_name)[0];
         $type = explode('.', $orig_name)[1];
@@ -110,7 +109,7 @@ class Add_bike extends MY_Controller {
             copy('uploads/'.$orig_name, 'uploads/'.$name.$suffix.'.'.$type);
     }
     
-    function crop_resize($orig_name, $suffix, $size)
+    public function crop_resize($orig_name, $suffix = '_thumb', $size = 180)
     {
         $name = explode('.', $orig_name)[0];
         $type = explode('.', $orig_name)[1];

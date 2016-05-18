@@ -16,7 +16,7 @@ class Sign_up extends MY_Controller {
     {
         $this->data['user_panel'] = $this->load->view('navbar_auth','', TRUE);
         $this->data['content'] = $this->load->view('signup','', TRUE);
-        $this->data['menu_active_btn'] = array('add_bike' => '', 'search' => '');
+        $this->data['menu_active_btn'] = array('add_bike' => '', 'bikes' => '');
         $this->load->view('basic_template', $this->data);
     }
     

@@ -6,7 +6,7 @@ $(document).ready(function(){
         $.ajax
         ({
             method: "POST",
-            url: "sign_up/validate",
+            url: "http://127.0.0.1/lost_bikes/sign_up/validate",
             data: form_data,
             success: function(answer)
             {

@@ -4,7 +4,7 @@ body
 .container
 {
     position: relative;
-    
+    width: 70%;
 }
 
 .panel-body
@@ -50,6 +50,7 @@ button:active, button:focus {
 #nav_bar
 {
     background-image: linear-gradient(rgba(50,50,50,1), rgba(20,20,20,1));
+    width: 100%;
 }
 
 
@@ -95,14 +96,23 @@ button:active, button:focus {
     height: 280px;
     transition: all 0.3s ease-out;
     margin-bottom: 15px;
-    width: 28%;
 }
+
+
 #prev_box:hover
 {
     background-color: rgb(220, 220, 240);
-    
 }
 
+#prev_box .location
+{
+    font-weight: bold;
+}
+#prev_box a
+{
+    text-decoration: none;
+    color: black;
+}
 
 #search_block
 {
@@ -117,17 +127,53 @@ button:active, button:focus {
     overflow: hidden;
 }
 
+.pagination
+{
+    text-align: center;
+    
+}
+.pagination a, #cur_page_num
+{
+    margin-left: 5px;
+    margin-right: 5px;
+}
 
+.pagination #cur_page_num
+{
+    font-weight: bold;
+}
 
+.pagination a
+{
+    display: inline-block;
+    margin: 8 0.2em;
+    padding: 3px;
+    background: #97CAF2;
+    border-radius: 2px;
+    transition: all 0.3s ease-out; 
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    width: 25px;
+}
 
+.pagination a:hover
+{
+    text-decoration: none;
+    color: rgb(50,50,50);
+    background: #53A7EA;
+}
 
+.edge_page a
+{
+    width: 80px;
+}
 
-
-
-
-
-
-
+#bike .part_key
+{
+    text-align: right;
+    font-weight: bold;
+}
 
 
 

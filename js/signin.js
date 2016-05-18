@@ -11,7 +11,7 @@ $(document).ready(function(){
         $.ajax
         ({
             method: "POST",
-            url: "authorization/sign_in",
+            url: "http://127.0.0.1/lost_bikes/authorization/sign_in",
             data: form_data,
             success: function(answer)
             {

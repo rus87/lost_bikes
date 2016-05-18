@@ -1,16 +1,20 @@
 $(document).ready(function(){
     $(document).on("click", "#search", function()
     {
-        var form_data = $("#search_form").serialize();
-        $.ajax
-        ({
-            method: "POST",
-            url: "search/check",
-            data: form_data,
-            success: function(answer)
+        if($("#search_input").val() != '')
             {
-                $("#bikes").html(answer);
+                var form_data = $("#search_form").serialize();
+                $.ajax
+                ({
+                    method: "POST",
+                    url: "http://127.0.0.1/lost_bikes/bikes/check",
+                    data: form_data,
+                    success: function(answer)
+                    {
+                        $("#bikes").html(answer);
+                    }
+                });
             }
-        });
+
     });
 });
