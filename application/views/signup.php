@@ -58,4 +58,4 @@
 
 
 
-<script type="text/javascript" src="js/signup.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>js/signup.js"></script>

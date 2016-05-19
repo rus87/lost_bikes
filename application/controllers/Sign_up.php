@@ -26,7 +26,7 @@ class Sign_up extends MY_Controller {
             array(
                 'field' => 'login',
                 'label' => 'Логин',
-                'rules' => 'trim|required|min_length[3]|max_length[20]|is_unique[users.login]|cyr_alpha_dash',
+                'rules' => 'trim|required|min_length[3]|max_length[20]|is_unique[lb_users.login]|cyr_alpha_dash',
                 'errors' => array(
                     'required' => '%s ввести забыли.',
                     'min_length' => '%s должен быть от 3 до 20 символов.',
@@ -37,7 +37,7 @@ class Sign_up extends MY_Controller {
             array(
                 'field' => 'email',
                 'label' => 'E-mail',
-                'rules' => 'trim|required|is_unique[users.email]|valid_email',
+                'rules' => 'trim|required|is_unique[lb_users.email]|valid_email',
                 'errors' => array(
                     'required' => '%s ввести забыли.',
                     'is_unique' => '%s занят.',

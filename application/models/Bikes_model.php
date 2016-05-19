@@ -24,7 +24,7 @@ class Bikes_model extends MY_Model
         $this->db->or_like('stem', $input);
         $this->db->or_like('location', $input);
         
-        $query = $this->db->get('bikes');
+        $query = $this->db->get('lb_bikes');
 
         //return $query->result();
         return $this->fetch_result($query->result());
@@ -34,13 +34,13 @@ class Bikes_model extends MY_Model
     {
         //$offset = ($page - 1) * $per_page;
         $this->db->order_by('modified', 'DESC');
-        $query = $this->db->get('bikes', $per_page, $offset);
+        $query = $this->db->get('lb_bikes', $per_page, $offset);
         return $this->fetch_result($query->result());
     }
     
     function bikes_count()
     {
-        return $this->db->count_all('bikes');
+        return $this->db->count_all('lb_bikes');
     }
     
     

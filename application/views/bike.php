@@ -1,16 +1,19 @@
+<script type="text/javascript" src="<?php echo base_url(); ?>js/bike.js"></script>
 <div id="bike">
     <div class="page-header">
         <h1><?php echo $heading; ?><small> [ <?php echo $location; ?> ] </small></h1>
     </div>
-    <div class="">
-        <p class="text-muted text-right"><span class="small">Дата кражи: </span><strong><span class="text-info"><?php echo $loss_date ?></strong></span></p>
-        <p class="text-muted text-right small">Резмещено пользователем <strong><a href=""><?php echo $user_login ?></a></strong> <?php echo $created ?></p>
-    </div>
-    
     <div class="row">
         <div class="col-sm-12">
-            <div class="col-sm-3"><img src="<?php echo $photo; ?>" class="img-responsive"></div>
-            <p><?php echo $comment ?></p>
+            <div class="thumb text-center">
+                <img src="<?php echo $photo_thumb; ?>" id="thumb_photo">
+                <div class="thumb_menu">
+                    <a href="<?php echo $photo_orig; ?>" target="_blank"><span class="small">Открыть оригинал</span></a>
+                </div>
+            </div>
+            <p class="text-muted text-left"><span class="small">Дата кражи: </span><strong><span class="text-info"><?php echo $loss_date ?></strong></span></p>
+            <p class="text-muted text-left small">Резмещено пользователем <strong><a href=""><?php echo $user_login ?></a></strong> <?php echo $created ?></p>
+            <p id="comment"><?php echo $comment ?></p>
         </div>
     </div>
     <div class="row">
@@ -29,3 +32,4 @@
         </div>
     </div>
 </div>
+

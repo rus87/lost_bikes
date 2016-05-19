@@ -36,9 +36,12 @@ class Bike extends MY_Controller {
         $this->bike_data['loss_date'] = $data['loss_date'];
         $this->bike_data['keys'] = $existing_keys;
         $this->bike_data['values'] = $existing_values;
-        $this->bike_data['photo'] = base_url().'uploads/'.$photo[0].'_thumb.'.$photo[1];
+        $this->bike_data['photo_thumb'] = base_url().'uploads/'.$photo[0].'_thumb.'.$photo[1];
+        $this->bike_data['photo_popup'] = array('photo_popup' => base_url().'uploads/'.$photo[0].'_popup.'.$photo[1]);
+        $this->bike_data['photo_orig'] = base_url().'uploads/'.$data['photo'];
         
         $this->data['content'] = $this->load->view('bike', $this->bike_data, TRUE);
+        $this->data['content'] .= $this->load->view('popup_photo', $this->bike_data['photo_popup'], TRUE);
         $this->load->view('basic_template', $this->data);
         
     }

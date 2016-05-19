@@ -1,4 +1,4 @@
-<div class="col-sm-4 col-xs-6" id="prev_box">
+<div class="col-sm-4 col-xs-12" id="prev_box">
     <div class=" frm"><h4><a href="<?php echo $link ?>"><?php echo $frame ?></a></h4></div>
     <div class="thumb img-thumbnail">
         <a href="<?php echo $link ?>"><img src="<?php echo $photo ?>" class="img-responsive"></a>

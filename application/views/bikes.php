@@ -1,11 +1,11 @@
 
 <div class="row">
-    <div class="col-sm-4">
+    <div class="col-md-4">
         <form method="post" id="search_form" class="form-inline">
             <div class="input-group">
                 <input type="text" class="form-control" name="search_query" id="search_input" placeholder="Поиск">
                 <span class="input-group-btn">
-                    <button id="search" class="btn btn-default" type="button">Go!</button>
+                    <button id="search" class="btn btn-primary" type="button"><span class="glyphicon glyphicon-search"></span></button>
                 </span>
             </div>
         </form>
@@ -25,4 +25,4 @@
 
 
 
-<script type="text/javascript" src='http://127.0.0.1/lost_bikes/js/search.js'></script>
+<script type="text/javascript" src='<?php echo base_url(); ?>js/search.js'></script>

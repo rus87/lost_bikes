@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-6 col-md-offset-3">
+    <div class="col-lg-6 col-md-offset-3">
         <form method="post" enctype="multipart/form-data" class="form-horizontal" role="form" id="bike_add_form" action="">
             <div class="well well-sm">
                 <div class="form-group">
@@ -146,4 +146,4 @@
     </div>
 </div>
 
-<script type="text/javascript" src='js/add_bike.js'></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>js/add_bike.js"></script>

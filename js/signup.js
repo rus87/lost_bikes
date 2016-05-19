@@ -35,13 +35,9 @@ $(document).ready(function(){
                     }
                 else
                     {
-                        $("#signup_form").fadeOut(200);
+                        $("#signup_form").hide();
                         $("#reg_success").fadeIn(200);
                     }
-                
-
-
-                
             }
         });
     });   
