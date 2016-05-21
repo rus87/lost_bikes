@@ -9,7 +9,7 @@ html
 body
 {
     background-image: url(../images/back.png);
-    background-repeat: repeat-x | repeat-y; 
+    background-repeat: repeat-x | repeat-y;
     
 }
 .container
@@ -17,7 +17,7 @@ body
     width: 70%;
     background-color: white;
     padding-top: 10px;
-    box-shadow: 0px 0px 5px 0px #525252;
+    box-shadow: 0 0 5px 0 #525252;
 }
 #main_menu
 {
@@ -77,7 +77,7 @@ button:active, button:focus {
     /*height: 80px;
     width: 260px;*/
     top: 60px;
-    right: 0px;
+    right: 0;
     display: none;
     background-color: rgb(220, 220, 240);
     /*background-image: linear-gradient(rgba(50,50,50,1), rgba(20,20,20,1));*/
@@ -87,12 +87,9 @@ button:active, button:focus {
     box-shadow: 5px 5px 6px -4px #9a9ad3;
 }
 
-#user_error
-{
-    
-}
 
-#bike_add_form form_group, #add_bike_btn_div
+
+#add_bike_btn_div
 {
     text-align: center;
 }
@@ -140,7 +137,7 @@ button:active, button:focus {
 .frm
 {
     font-weight: bold;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     white-space: nowrap;
     overflow: hidden;
 }
@@ -164,7 +161,6 @@ button:active, button:focus {
 .pagination a
 {
     display: inline-block;
-    margin: 8 0.2em;
     padding: 3px;
     background: #97CAF2;
     border-radius: 2px;
@@ -253,7 +249,7 @@ button:active, button:focus {
     margin-left: -450px;
     margin-top: -300px;
     z-index: 3;
-    box-shadow: 1px 1px 3px 0px #7f7f7f;
+    box-shadow: 1px 1px 3px 0 #7f7f7f;
     display: none;
 }
 #popup_photo img
@@ -280,7 +276,7 @@ button:active, button:focus {
 {
     position: absolute;
     right: -25px;
-    top: 0px;
+    top: 0;
     color: rgb(220, 220, 220);
     cursor: pointer;
 }

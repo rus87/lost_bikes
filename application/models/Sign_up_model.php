@@ -5,4 +5,10 @@ class Sign_up_model extends MY_Model
     {
         $this->db->insert('lb_users', $data);
     }
+
+    function activate($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->update('lb_users', array('active' => TRUE));
+    }
 }

@@ -78,15 +78,53 @@ class Sign_up extends MY_Controller {
             echo json_encode($errors, JSON_UNESCAPED_UNICODE);
         }
         else
-        {
+        {///
             
             $user_data['login'] = $this->input->post()['login'];
             $user_data['email'] = $this->input->post()['email'];
             $user_data['password'] = md5($this->input->post()['password']);
             $user_data['activation_key'] = md5('13'.$user_data['login']);
-            $this->load->model('sign_up_model','', TRUE);
-            $this->sign_up_model->add_user($user_data);
-            echo "OK";
+            $this->load->model('Sign_up_model','', TRUE);
+            $this->Sign_up_model->add_user($user_data);
+            echo $this->send_code($user_data);
+        }
+    }
+
+    function send_code($user)
+    {
+        $code = $user['activation_key'];
+        if (! method_exists($this, 'Sign_up_model'))
+            $this->load->model('Sign_up_model','', TRUE);
+        $user['id'] = $this->Sign_up_model->get_user('login', $user['login'])->id;
+        $link = base_url()."sign_up/activate/".$user['id']."/".$code;
+
+
+        $this->load->library('email');
+
+        $this->email->from('users_service@lost-bikes.zzz.com.ua', 'Lost Bikes');
+        $this->email->to($user['email']);
+        $this->email->subject('Account Activation');
+        $this->email->message("Для активации Вашего аккаунта перейдите по ссылке: ".$link);
+
+        if (! $this->email->send())
+        {
+            return $this->email->print_debugger();
+        }
+        else return "OK";
+    }
+
+    function activate($id, $code)
+    {
+        //echo "Я функция активации и получила логин ".$id." и код активации ".$code;
+        if (! method_exists($this, 'Sign_up_model'))
+            $this->load->model('Sign_up_model','', TRUE);
+        $user = $this->Sign_up_model->get_user('id', $id);
+        if ($user->activation_key != $code) {
+            return FALSE;
+        }
+        else{
+            $this->Sign_up_model->activate($user->id);
+            return TRUE;
         }
     }
     

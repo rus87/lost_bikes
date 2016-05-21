@@ -8,7 +8,7 @@ class Authorization extends MY_Controller {
         $data = array('response' => '', 'error' => '');
         $form_data = $this->input->post(NULL, TRUE);
         $this->load->model('Authorization_model', '', TRUE);
-        $user = $this->Authorization_model->get_user($form_data['login']);
+        $user = $this->Authorization_model->get_user('login', $form_data['login']);
         if(!$user)  $data['error'] = 'Нет пользователя с таким логином';
         else
         {

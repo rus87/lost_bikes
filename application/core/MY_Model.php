@@ -6,12 +6,13 @@ class MY_Model extends CI_Model
         parent :: __construct();
     }
     
-    public function get_user($login)
+    public function get_user($field, $input)
     {
-        $query = $this->db->get_where('lb_users', array('login' => $login), 1);
+        $query = $this->db->get_where('lb_users', array($field => $input), 1);
         if($query->num_rows() == 1) return $query->row();
         else return FALSE;
     }
+
     
     
 }
