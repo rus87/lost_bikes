@@ -1,0 +1,11 @@
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond $1 !^(index\.php|uploads|robots\.txt)
+RewriteRule ^(.*)$ index.php/$1 [L]
+
+
+order deny,allow 
+deny from all
+allow from 109.200.249.27
