@@ -32,9 +32,6 @@ class Bikes extends MY_Controller {
         $config['last_tag_close'] = '</span>';
         $this->pagination->initialize($config);
         $this->data['pages'] = array('pages' => $this->pagination->create_links());
-        
-        $this->logged_in ? $this->data['user_panel'] = $this->load->view('navbar_user','', TRUE) : 
-        $this->data['user_panel'] = $this->load->view('navbar_auth','', TRUE);
         $this->data['menu_active_btn'] = array('add_bike' => '', 'bikes' => 'active');
         
         

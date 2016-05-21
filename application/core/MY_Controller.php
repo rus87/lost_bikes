@@ -13,6 +13,9 @@ class MY_Controller extends CI_Controller {
         
         Session :: init();
         $this->auth_check();
+
+        $this->logged_in ? $this->data['user_panel'] = $this->load->view('navbar_user','', TRUE) :
+            $this->data['user_panel'] = $this->load->view('navbar_auth','', TRUE);
     }
     
     function auth_check()

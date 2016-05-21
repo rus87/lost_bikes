@@ -13,16 +13,9 @@ class Add_bike extends MY_Controller {
     
     function index()
     {
-        if($this->logged_in)
-        {
-            $this->data['user_panel'] = $this->load->view('navbar_user','', TRUE);
-            $this->data['content'] = $this->load->view('add_bike','', TRUE);
-        }
-        else
-        {
-            $this->data['user_panel'] = $this->load->view('navbar_auth','', TRUE);
+        ($this->logged_in) ? $this->data['content'] = $this->load->view('add_bike','', TRUE) :
             $this->data['content'] = $this->load->view('permission_denied','', TRUE);
-        }
+
         
         $this->data['menu_active_btn'] = array('add_bike' => 'active', 'bikes' => '');
 		$this->load->view('basic_template', $this->data);
