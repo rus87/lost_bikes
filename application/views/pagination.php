@@ -1,1 +1,0 @@
-<div class="col-xs-12 pagination"><?php echo $pages ?></div>
