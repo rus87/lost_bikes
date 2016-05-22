@@ -124,7 +124,8 @@ class Sign_up extends MY_Controller {
         }
         else{
             $this->Sign_up_model->activate($user->id);
-            return TRUE;
+            $this->data['content'] = $this->load->view('activation_success', '', TRUE);
+            $this->load->view('basic_template', $this->data);
         }
     }
     

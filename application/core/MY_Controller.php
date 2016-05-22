@@ -16,6 +16,7 @@ class MY_Controller extends CI_Controller {
 
         $this->logged_in ? $this->data['user_panel'] = $this->load->view('navbar_user','', TRUE) :
             $this->data['user_panel'] = $this->load->view('navbar_auth','', TRUE);
+        $this->data['menu_active_btn'] = array('add_bike' => '', 'bikes' => '');
     }
     
     function auth_check()

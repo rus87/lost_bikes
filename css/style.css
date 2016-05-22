@@ -17,6 +17,7 @@ body
     width: 70%;
     background-color: white;
     padding-top: 10px;
+    padding-bottom: 10px;
     box-shadow: 0 0 5px 0 #525252;
 }
 #main_menu
@@ -77,14 +78,15 @@ button:active, button:focus {
     /*height: 80px;
     width: 260px;*/
     top: 60px;
-    right: 0;
+    right: 10px;
     display: none;
-    background-color: rgb(220, 220, 240);
+    background-color: rgba(50, 50, 50, 0.85);
     /*background-image: linear-gradient(rgba(50,50,50,1), rgba(20,20,20,1));*/
    /* padding: 10px 0 0 5px;*/
     text-align: center; 
     z-index: 10;
-    box-shadow: 5px 5px 6px -4px #9a9ad3;
+    box-shadow: 0 5px 6px -4px #9a9ad3;
+    border: none;
 }
 
 
