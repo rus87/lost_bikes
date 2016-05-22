@@ -18,7 +18,7 @@ class Authorization extends MY_Controller {
                 if(! $user->active) $data['error'] = 'Учетная запись не активирована';
                 else
                 {
-                    Session :: set('user', $user->login);
+                    Session :: set('user', $user);
                     
                     $data['response'] = $this->load->view('navbar_user', '', TRUE);
                 }

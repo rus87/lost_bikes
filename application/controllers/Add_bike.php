@@ -44,7 +44,7 @@ class Add_bike extends MY_Controller {
                 $this->data['bike'] = $this->input->post(NULL, TRUE);
                 $this->data['bike']['photo'] = $this->upload->data('file_name');
                 $this->data['bike']['created'] = date('Y-n-d H:i:s');
-                $this->data['bike']['user_id'] = $this->Add_bike_model->get_user('login',$this->logged_in)->id;
+                $this->data['bike']['user_id'] = $this->Add_bike_model->get_user('login',$this->logged_in->login)->id;
                 $this->Add_bike_model->add_bike($this->data['bike']);
                 $this->create_images($this->upload->data('file_name'));
                 echo "OK";

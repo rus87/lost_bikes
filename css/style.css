@@ -185,10 +185,14 @@ button:active, button:focus {
     width: 80px;
 }
 
-#bike .part_key
+#bike .part_key_display
 {
     text-align: right;
     font-weight: bold;
+}
+.part_key
+{
+    display: none;
 }
 
 #bikes
@@ -283,14 +287,29 @@ button:active, button:focus {
     cursor: pointer;
 }
 
+.edit_pen
+{
+    visibility: hidden;
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
 
+.part_edit_form
+{
+    display: none;
+}
 
+.part_td
+{
+    position: relative;
+}
 
-
-
-
-
-
+.bike_id
+{
+    display: none;
+}
 
 
 
