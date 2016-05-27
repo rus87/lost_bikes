@@ -44,6 +44,9 @@
             </table>
         </div>
     </div>
+    <div><button class="btn btn-sm btn-link" id="parts_add_btn" type="button">Добавить</button></div>
+    <div class="col-md-6 col-md-offset-3" id="parts_add_div">
+    </div>
 </div>
 
 

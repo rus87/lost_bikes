@@ -301,6 +301,11 @@ button:active, button:focus {
     display: none;
 }
 
+#parts_add_div
+{
+    display: none;
+}
+
 .part_td
 {
     position: relative;

@@ -64,5 +64,34 @@ class Bike extends MY_Controller {
 
         }
     }
+
+    function generate_empty_parts_form()
+    {
+        $input = $this->input->post('data', TRUE);
+        $input = json_decode($input, TRUE);
+        $incorrect_key = FALSE;
+        foreach($input as $key)
+        {
+            if(! array_key_exists($key, BIKE_PARTS)) $incorrect_key = TRUE;
+        }
+        if(! $incorrect_key)
+        {
+            $empty_fields = array_diff(PARTS_KEYS, $input);
+            echo $this->load->view('bike_parts_add', array('fields' => $empty_fields), TRUE);
+            //echo "<pre>";
+            //var_dump($add_parts_view);
+        }
+    }
+
+    function add_parts()
+    {
+        $this->load->library('form_validation');
+        $this->form_validation->run('bike_parts_add');
+        if(validation_errors())
+        {
+            echo validation_errors();
+        }
+        else echo "OK";
+    }
     
 }
