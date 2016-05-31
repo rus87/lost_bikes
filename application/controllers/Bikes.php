@@ -14,11 +14,11 @@ class Bikes extends MY_Controller {
         $this->load->library('MY_form_validation');
         $this->load->library('pagination');
         $this->load->model('Bikes_model', '', TRUE);
+
     }
 
 	public function show($offset = 0)
 	{
-        
         $config['base_url'] = base_url().'bikes/show';
         $config['total_rows'] = $this->Bikes_model->bikes_count();
         $config['per_page'] = $this->per_page;

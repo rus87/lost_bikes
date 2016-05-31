@@ -8,7 +8,7 @@ $(document).ready(function(){
         {
             $(".thumb_menu").fadeOut(200);
         }
-                    );
+    );
     $(".thumb_menu a").click(function()
     {
         $(".thumb_menu").fadeOut(200);
@@ -38,5 +38,5 @@ $(document).ready(function(){
         }
         
     });
-    
+
 });

@@ -5,13 +5,16 @@
 
 <div id="login_popup" class="well well-sm">
     <form id="sign_in_form" class="form-inline">
-    <div class="form-group">
-        <input type="text" class="form-control input-sm" name="login" placeholder="login" size="7">
-    </div>
-    <div class="form-group">
-        <input type="password" class="form-control input-sm" name="password" placeholder="password" size="7">
-    </div>
-    <button id="signin" class="btn btn-sm btn-link" type="button"><span class="glyphicon glyphicon-log-in"></span> Войти</button>
+        <div class="form-group">
+            <input type="text" class="form-control input-sm" name="login" placeholder="login" size="7">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control input-sm" name="password" placeholder="password" size="7">
+        </div>
+        <div class="form-group checkbox">
+            <input type="checkbox" name="remember">
+        </div>
+        <button id="signin" class="btn btn-sm btn-link" type="button"><span class="glyphicon glyphicon-log-in"></span> Войти</button>
     </form>
     <div class="row">
     <div class="col-sm-4">

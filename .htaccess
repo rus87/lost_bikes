@@ -7,5 +7,5 @@ RewriteRule ^(.*)$ index.php/$1 [L]
 
 
 order deny,allow 
-deny from none
+deny from all
 allow from 109.200.249.27

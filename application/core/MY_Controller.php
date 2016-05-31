@@ -10,6 +10,7 @@ class MY_Controller extends CI_Controller {
     {
         parent::__construct();
         $this->load->helper('url');
+        $this->load->model('Authorization_model', '', TRUE);
         
         Session :: init();
         $this->auth_check();
@@ -25,6 +26,32 @@ class MY_Controller extends CI_Controller {
         if(isset($_SESSION['user'])) 
         {
             $this->logged_in = $_SESSION['user'];
+        }
+        else
+        {
+            $remember_hash = $this->input->cookie('token', TRUE);
+            $user_id = $this->input->cookie('id', TRUE);
+            if($remember_hash != NULL && $user_id != NULL)
+            {
+                $user = $this->Authorization_model->get_user('id', $user_id);
+                if(is_object($user))
+                {
+                    if ($remember_hash == $user->remember) {
+                        $this->logged_in = $user;
+                        Session::set('user', $user);
+                    }
+                    else {
+                        $this->input->set_cookie('token', '');
+                        $this->input->set_cookie('id', '');
+                    }
+                }
+                else{
+                    $this->input->set_cookie('token', '');
+                    $this->input->set_cookie('id', '');
+                }
+
+            }
+
         }
     }
 }
