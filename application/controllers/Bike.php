@@ -24,6 +24,10 @@ class Bike extends MY_Controller {
         }
         
         $photo = explode('.', $data['photo']);
+        isset($data['coordinates']) ?
+            $this->bike_data['map'] = $this->load->view('bike_map', array('coordinates' => $data['coordinates']), TRUE) :
+            $this->bike_data['map'] = NULL;
+
         $this->bike_data['user_id'] = $data['user_id'];
         $this->bike_data['id'] = $data['id'];
         $this->bike_data['heading'] = strtoupper($data['frame']);

@@ -7,8 +7,12 @@ body
 {
     background-image: url(../images/back.png);
     background-repeat: repeat-x | repeat-y;
-    
 }
+
+body, html{height: 100%}
+
+#map {height: 400px}
+
 .container
 {
     width: 70%;

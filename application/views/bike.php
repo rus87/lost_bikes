@@ -31,5 +31,6 @@
             </table>
         </div>
     </div>
+    <?php echo $map ?>
 </div>
 

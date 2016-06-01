@@ -10,7 +10,12 @@ class Bike_model extends MY_Model
         {
             if($data[0][$key] == '') unset($data[0][$key]);
         }
-        
+
+        if(isset($data[0]['coordinates']))
+            $data[0]['coordinates'] = explode(' ', $data[0]['coordinates']);
+
+
+
         $data[0]['user_login'] = $this->db->get_where('lb_users', array('id' => $data[0]['user_id']), 1)->result()[0]->login;
         return $data[0];
     }
