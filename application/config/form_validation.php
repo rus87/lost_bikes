@@ -188,5 +188,26 @@ $config = array(
                     'label' => 'Вынос',
                     'rules' => 'trim|max_length[50]'
                 )
+            ),
+            'password_recovery' => array(
+                array(
+                    'field' => 'password',
+                    'label' => 'Пароль',
+                    'rules' => 'trim|required|min_length[6]|alpha_dash',
+                    'errors' => array(
+                        'required' => 'Надо обязательно ввести %s.',
+                        'min_length' => '%s должен быть не короче 6 символов.',
+                        'alpha_dash' => '%s может состоять только из букв и цифр.'
+                    )
+                ),
+                array(
+                    'field' => 'passconf',
+                    'label' => 'подтверждение пароля',
+                    'rules' => 'trim|required|matches[password]',
+                    'errors' => array(
+                        'required' => 'Надо обязательно ввести %s',
+                        'matches' => 'Введенные пароли не совпадают.'
+                    )
+                )
             )
         );

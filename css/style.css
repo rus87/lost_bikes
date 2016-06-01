@@ -313,6 +313,15 @@ button:active, button:focus {
     display: none;
 }
 
+#recovery_error
+{
+    display: none;
+}
+#recovery_success
+{
+    display: none;
+}
+
 
 
 

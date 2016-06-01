@@ -23,7 +23,7 @@
         </form>
     </div>
     <div class="col-sm-8">
-        <form action="" method="post">
+        <form action="<?php echo base_url();?>authorization/recovery">
             <button class="btn btn-sm btn-link" type="submit">Восстановить пароль</button>
         </form>
     </div>

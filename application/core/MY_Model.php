@@ -13,6 +13,10 @@ class MY_Model extends CI_Model
         else return FALSE;
     }
 
-    
+    public function set_user_data($field, $value, $data)
+    {
+        $this->db->where($field, $value);
+        $this->db->update('lb_users', $data);
+    }
     
 }

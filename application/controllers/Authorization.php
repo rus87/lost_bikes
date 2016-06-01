@@ -31,9 +31,7 @@ class Authorization extends MY_Controller {
                 }
             }
         }
-        
         echo json_encode($data, JSON_UNESCAPED_UNICODE);
-        
     }
     
     function log_out()
@@ -42,9 +40,99 @@ class Authorization extends MY_Controller {
         $this->Authorization_model->set_remember_hash('', Session::get('user')->id);
         $this->input->set_cookie('token', '');
         $this->input->set_cookie('id', '');
-        //header("Location: ".base_url());
         echo $this->load->view('navbar_auth','', TRUE);
     }
+
+    function recovery($token = NULL)
+    {
+        if ($token == NULL)
+        {
+            $user_data = $this->input->post('login_email', TRUE);
+            if($user_data)
+            {
+                $user = $this->Authorization_model->get_user('email', $user_data);
+                if(! $user) $user = $this->Authorization_model->get_user('login', $user_data);
+                if(! $user) echo "error";
+                if($user)
+                {
+                    $token = array('recovery_token' => md5(time()));
+                    $this->Authorization_model->set_user_data('id', $user->id, $token);
+                    echo $this->send_recovery_link($user->email, $token['recovery_token']);
+                }
+            }
+            else
+            {
+                $this->data['content'] = $this->load->view('recovery','', TRUE);
+                $this->load->view('basic_template', $this->data);
+            }
+
+        }
+        else
+        {
+            if(strlen($token) == 32 && ! preg_match('/[^a-z0-9]/', $token))
+            {
+                $user = $this->Authorization_model->get_user('recovery_token', $token);
+                if($user)
+                {
+                    $this->data['content'] = $this->load->view('new_pass',array('token' => $token), TRUE);
+                    $this->load->view('basic_template', $this->data);
+                    //echo "Показывем форму для ввода нового пароля";
+                }
+            }
+        }
+    }
+
+    function set_password()
+    {
+        if($this->input->post('password'))
+        {
+            $token = $this->input->post('token', TRUE);
+            if(strlen($token) == 32 && ! preg_match('/[^a-z0-9]/', $token))
+            {
+                $user = $this->Authorization_model->get_user('recovery_token', $token);
+                if($user)
+                {
+                    $this->load->library('form_validation');
+                    $this->form_validation->set_error_delimiters('', '');
+                    $this->form_validation->run('password_recovery');
+                    if(validation_errors())
+                    {
+                        $send = array('status' => 'error',
+                            'password_error' => form_error('password'),
+                            'passconf_error' => form_error('passconf'));
+                    }
+                    else
+                    {
+                        $send = array('status' => 'OK');
+                        $new_pass = md5($this->input->post('password'));
+                        $this->Authorization_model->set_user_data('id', $user->id, array('password' => $new_pass));
+                        $this->Authorization_model->set_user_data('id', $user->id, array('recovery_token' => ''));
+                    }
+
+                    echo json_encode($send, JSON_UNESCAPED_UNICODE);
+                }
+            }
+
+        }
+    }
+
+    function send_recovery_link($email, $token)
+    {
+        $link = base_url().'authorization/recovery/'.$token;
+
+        $this->load->library('email');
+        $this->email->from('users_service@lost-bikes.zzz.com.ua', 'Lost Bikes');
+        $this->email->to($email);
+        $this->email->subject('Password Recovery');
+        $this->email->message("Для восстановления пароля перейдите по ссылке: ".$link);
+
+        if (! $this->email->send())
+        {
+            return $this->email->print_debugger();
+        }
+        else return "OK";
+    }
+
 
     function set_remember_cookies($form_data)
     {
@@ -77,4 +165,5 @@ class Authorization extends MY_Controller {
         else $this->Authorization_model->set_client_info($id, 'last_ip', 'invalid');
 
     }
+
 }
