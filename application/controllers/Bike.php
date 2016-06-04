@@ -49,7 +49,7 @@ class Bike extends MY_Controller {
 
         $this->data['content'] .= $this->load->view('popup_photo', $this->bike_data['photo_popup'], TRUE);
         $this->load->view('basic_template', $this->data);
-        
+
     }
 
     function edit_part()

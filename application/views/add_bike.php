@@ -33,7 +33,22 @@
                     </div>
                 </div>
             </div>
-            <button id="show_parts_btn" type="button" class="btn btn-sm btn-link">Комплектующие <span class="glyphicon glyphicon-chevron-down"></span></button>
+            <div>
+                <button type="button" onclick="show_map()" class="btn btn-sm btn-link">Указать место на карте <span class="glyphicon glyphicon-chevron-down"></span></button>
+            </div>
+            <div id="add_bike_map" class="well well-sm">
+                <div id="map"></div>
+                <span id="default_lat" style="display: none"> <?php echo $loc['lat'] ?></span>
+                <span id="default_lng" style="display: none"> <?php echo $loc['lng'] ?></span>
+                <div>
+                    <button type="button" onclick="hide_map()" class="btn btn-sm btn-link">Свернуть <span class="glyphicon glyphicon-chevron-up"></span></button>
+                    <button type="button" onclick="clear_map()" class="btn btn-sm btn-link">Очистить <span class="glyphicon glyphicon-map-marker"></span></button>
+                    <span class="glyphicon glyphicon-info-sign pull-right" id="map_info" data-toggle="tooltip"></span>
+                </div>
+            </div>
+            <div>
+                <button id="show_parts_btn" type="button" class="btn btn-sm btn-link">Комплектующие <span class="glyphicon glyphicon-chevron-down"></span></button>
+            </div>
             <div class="well well-sm" id="parts">
                 <div class="form-group">
                     <label class="control-label col-sm-8">Последние 4 символа серийного номера:</label>
@@ -142,8 +157,11 @@
             <div class="col-sm-12" id="add_bike_btn_div">
                 <button class="btn btn-primary" id="add_bike" type="button">Добавить</button>
             </div>
+            <input type="hidden" name="lat" id="lat">
+            <input type="hidden" name="lng" id="lng">
         </form>
     </div>
 </div>
 
 <script type="text/javascript" src="<?php echo base_url(); ?>js/add_bike.js"></script>
+<div id="map_callback"></div>

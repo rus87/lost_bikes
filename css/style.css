@@ -326,8 +326,25 @@ button:active, button:focus {
     display: none;
 }
 
+#add_bike_map
+{
+    height: auto;
+    display: none;
+}
+#add_bike_map #map
+{
+    height: 360px;
+}
 
-
+.tooltip > .tooltip-inner
+{
+    width: 300px;
+    text-align: left;
+}
+#map_info:hover
+{
+    cursor: pointer;
+}
 
 
 

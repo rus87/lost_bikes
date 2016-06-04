@@ -13,8 +13,17 @@ class Add_bike extends MY_Controller {
     
     function index()
     {
-        ($this->logged_in) ? $this->data['content'] = $this->load->view('add_bike','', TRUE) :
-            $this->data['content'] = $this->load->view('permission_denied','', TRUE);
+        if (($this->logged_in))
+        {
+            $location = $this->get_user_location();
+            if(! $location)
+            {
+                $location['lat'] = 50.4535091;
+                $location['lat'] = 30.5687186;
+            }
+            $this->data['content'] = $this->load->view('add_bike',array('loc' => $location), TRUE);
+        }
+        else $this->data['content'] = $this->load->view('permission_denied','', TRUE);
 
         
         $this->data['menu_active_btn'] = array('add_bike' => 'active', 'bikes' => '');
@@ -45,6 +54,9 @@ class Add_bike extends MY_Controller {
                 $this->data['bike']['photo'] = $this->upload->data('file_name');
                 $this->data['bike']['created'] = date('Y-n-d H:i:s');
                 $this->data['bike']['user_id'] = $this->Add_bike_model->get_user('login',$this->logged_in->login)->id;
+                $this->data['bike']['coordinates'] = $this->input->post('lat').' '.$this->input->post('lng');
+                if(isset($this->data['bike']['lat']))unset($this->data['bike']['lat']);
+                if(isset($this->data['bike']['lng']))unset($this->data['bike']['lng']);
                 $this->Add_bike_model->add_bike($this->data['bike']);
                 $this->create_images($this->upload->data('file_name'));
                 echo "OK";
@@ -231,6 +243,20 @@ class Add_bike extends MY_Controller {
             }
         }
         
+    }
+
+    function get_user_location()
+    {
+        $this->load->library('geoip/ipgeobase');
+        $user_ip = null;
+        if ($this->input->valid_ip($this->input->ip_address()))
+        {
+            $user_ip = $this->input->ip_address();
+            $geobase = new Ipgeobase();
+            $info = $geobase->GetRecord($user_ip);
+            return array('lat' => $info['lat'], 'lng' => $info['lng']);
+        }
+        else return false;
     }
     
     
