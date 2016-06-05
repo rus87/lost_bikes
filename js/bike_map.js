@@ -1,6 +1,8 @@
 var map;
 function map_init()
 {
+    //var lat = 46.474;
+    //var lng = 30.7557;
     var lat = $("#lat").text();
     var lng = $("#lng").text();
     var place = new google.maps.LatLng(lat, lng);

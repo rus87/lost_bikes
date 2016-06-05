@@ -19,7 +19,7 @@ class Add_bike extends MY_Controller {
             if(! $location)
             {
                 $location['lat'] = 50.4535091;
-                $location['lat'] = 30.5687186;
+                $location['lng'] = 30.5687186;
             }
             $this->data['content'] = $this->load->view('add_bike',array('loc' => $location), TRUE);
         }

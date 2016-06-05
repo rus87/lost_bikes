@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+    $(".container").css('background-color', 'rgba(255, 255, 255, 0.9');
+
     $('[data-toggle="tooltip"]').tooltip({
         placement: 'top',
         title: "<p>Для выбора места кликните в нужной точке на карте.</p><p>Для изменения места перетащите маркер или просто кликните в другом месте</p>",

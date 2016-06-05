@@ -152,7 +152,7 @@
                         <input type="text" class="form-control" name="stem" placeholder="Hope AM-FR Stem">
                     </div>
                 </div>
-                <button id="hide_parts_btn" type="button" class="btn btn-sm btn-link">Свернуть комплектующие <span class="glyphicon glyphicon-chevron-up"></span></button></button>
+                <button id="hide_parts_btn" type="button" class="btn btn-sm btn-link">Свернуть комплектующие <span class="glyphicon glyphicon-chevron-up"></span></button>
             </div>
             <div class="col-sm-12" id="add_bike_btn_div">
                 <button class="btn btn-primary" id="add_bike" type="button">Добавить</button>

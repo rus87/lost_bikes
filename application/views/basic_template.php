@@ -27,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </head>
     <body>
         <div class="container-fluid" id="main_menu">
-            <nav class="navbar navbar-inverse" id="nav_bar">
+            <nav class="navbar navbar-inverse navbar-fixed-top" id="nav_bar">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="<?php echo base_url(); ?>">LOST BIKES</a>
                 </div>

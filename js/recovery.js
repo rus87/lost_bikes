@@ -2,6 +2,7 @@
     function send()
     {
         var form = $("#recovery_form").serialize();
+
         $.ajax
         ({
             method: "POST",
