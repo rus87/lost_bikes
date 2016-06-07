@@ -5,13 +5,20 @@
 
 body
 {
-    background-image: url(../images/back.jpg);
+    background-image: url(../images/back-blur.jpg);
     background-size: cover;
     background-attachment: fixed;
 }
+#back_fading
+{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(127, 127, 127, 0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
 
-
-body, html{height: 100%}
+}
 
 #map {height: 400px}
 
@@ -125,6 +132,7 @@ button:active, button:focus {
     background: rgba(220, 220, 220, 0.7);
     margin-bottom: 10px;
     padding-left: 15px;
+    padding-right: 15px;
     padding-bottom: 15px;
 
 }
@@ -265,7 +273,7 @@ button:active, button:focus {
     width: 900px;
     height: 600px;
     background-color:white;
-    top:50%;
+    top:53%;
     left: 50%;
     margin-left: -450px;
     margin-top: -300px;

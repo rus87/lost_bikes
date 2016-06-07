@@ -26,6 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <![endif]-->
     </head>
     <body>
+    <div id="back_fading"></div>
         <div class="container-fluid" id="main_menu">
             <nav class="navbar navbar-inverse navbar-fixed-top" id="nav_bar">
                 <div class="navbar-header">
